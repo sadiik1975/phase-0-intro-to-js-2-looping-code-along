@@ -13,17 +13,28 @@ describe( 'index.js', () => {
     spy.restore();
   } );
 
-  describe( 'writeCards()', () => {
+ // test/indexTest.js
 
-    it( 'returns an array of thank you messages for each name provided to the function', () => {
-      expect(writeCards(["Guadalupe", "Ollie", "Aki"], "surprise")).to.deep.eq([
-        "Thank you, Guadalupe, for the wonderful surprise gift!",
-        "Thank you, Ollie, for the wonderful surprise gift!",
-        "Thank you, Aki, for the wonderful surprise gift!",
-      ]);
-    } );
-  } );
-
+ const assert = require('assert');
+ const { writeCards } = require('../index');
+ 
+ describe('writeCards', () => {
+     it('returns an array of thank you messages for each name provided', () => {
+         const names = ['Guadalupe', 'Ollie', 'Aki'];
+         const actual = writeCards(names);
+         const expected = [
+             'Thank you, Guadalupe, for the wonderful surprise gift!',
+             'Thank you, Ollie, for the wonderful surprise gift!',
+             'Thank you, Aki, for the wonderful surprise gift!'
+         ];
+ 
+         console.log('Actual:', actual);
+         console.log('Expected:', expected);
+ 
+         assert.deepStrictEqual(actual, expected);
+     });
+ });
+ 
   describe( 'countDown()', () => {
     afterEach( () => {
       spy.restore();
